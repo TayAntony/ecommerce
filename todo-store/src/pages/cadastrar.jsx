@@ -10,17 +10,17 @@ import {ip} from './inicio'
 function Cadastrar() {
 
     let navigate = useNavigate();
-    const goHomepage = () => {
-        navigate("/homepage")}
 
-    const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [senha, setSenha] = useState('')
 
 
     const cadastrar = async (evt) => {
         evt.preventDefault(); //previne o comportamento padrão do fomulario de atualizar a página quando se envia ele (submit)
-        const infoDoCadastro = { username: nome, password: senha, email: email };
+        const infoDoCadastro = { username: username, password: senha, email: email };
+        console.log('username/email:',username)
+        console.log('email/nome completo:',email)
         if(senha.length < 8){
             Swal.fire({
                 icon: 'warning',
@@ -35,6 +35,15 @@ function Cadastrar() {
                 icon: 'warning',
                 title: 'Oops...',
                 text: 'O E-mail digitado não é válido!',
+                confirmButtonText: 'Tentar novamente',
+                confirmButtonColor: '#D51317',
+            });
+            return
+        }else if (!username.includes("_") ){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Seu usuário deve conter algum dos seguintes: @ . _ -',
                 confirmButtonText: 'Tentar novamente',
                 confirmButtonColor: '#D51317',
             });
@@ -89,7 +98,7 @@ function Cadastrar() {
         <Voltar/>
         <p className='paragrafos max-w-xs mt-10'>Preencha as informações para realizar o cadastro!</p>
             <form onSubmit={cadastrar} className='cardInicio'>
-                <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder='Nome de usuário' className='inputs'/>
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Nome único de usuário' className='inputs'/>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='E-mail' className='inputs'/>
                 <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder='Senha ' className='inputs'/>
                 <Botao texto='Finalizar cadastro'/>

@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-iof0b!772b6wc55t-#-sgc*654wdsh!8ve_*p13c-1*w(8)$ks
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,6 +50,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5173',
     'http://localhost:5173',
 ]
+
+CORS_ALLOWED_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'ecommerce.urls'
 
