@@ -1,9 +1,10 @@
-import React, {Component} from "react";
+import React  from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios'
+import {ip} from './inicio'
 
 const Produtos = () => {
-    axios.get("http://127.0.0.1:8000/loja/produtos/")
+    axios.get(`${ip}/loja/produtos/`)
         .then((res)=>{
             console.log(res.data)
         })

@@ -6,7 +6,7 @@ import Coracao from '../assets/icons/coracao_vazio.png'
 import Comprar from '../components/botaoComprar'
 import BtnCarrinho from '../components/botaoCarrinho'
 import imgCarrinho from '../assets/icons/carrinho_vazio.png' 
- 
+import {ip} from './inicio'
 
 function ProdutoDetalhe(navigation) {
     const {id} = useParams()
@@ -14,7 +14,7 @@ function ProdutoDetalhe(navigation) {
     const [produto, setProduto] = useState()
 
     useEffect(() =>{
-        axios.get(`http://127.0.0.1:8000/loja/produtos/${id}`)
+        axios.get(`${ip}/loja/produtos/${id}`)
         .then((res)=>{
             setProduto(res.data)
         })

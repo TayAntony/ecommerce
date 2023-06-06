@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import MyComponent from '../components/barra-pesquisa'
 import CardProduto from '../components/cardProduto'
 import { CardCarregando } from '../components/CardCarregando'
+import {ip} from './inicio'
 
 function useSession() {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ function useSession() {
             
             //verifica se o token existente é válido
             try {
-                const { data } = await axios.get("http://127.0.0.1:8000/auth/users/me/", {
+                const { data } = await axios.get(`${ip}/auth/users/me/`, {
                     headers: {
                         Authorization: `Token ${token}`
                     }
@@ -45,7 +46,7 @@ function Homepage() {
     const [lista, setLista] = useState(null);
    
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/loja/produtos", { headers: { "Content-Type": "aplication/json" } })
+        axios.get(`${ip}/loja/produtos`, { headers: { "Content-Type": "aplication/json" } })
         .then((res) => {
             setLista(res.data)                
         })

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import {ip} from './inicio'
 
 function Cadastrar() {
 
@@ -42,7 +43,7 @@ function Cadastrar() {
 
         //fazendo uma requisição pro endpoint de cadastro
         try {
-            await axios.post('http://127.0.0.1:8000/auth/users/', infoDoCadastro);
+            await axios.post(`${ip}/auth/users/`, infoDoCadastro);
             navigate("/login")
         } catch (err) {
             console.log(err)

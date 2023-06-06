@@ -2,6 +2,8 @@ import LogoComponent from "../components/logo";
 import Botao from '../components/botaoLogin'
 import { useNavigate } from 'react-router-dom'
 
+export const ip = 'http://127.0.0.1:8000'
+
 function Card() {
   let navigate = useNavigate();
   
@@ -16,13 +18,15 @@ function Card() {
     return ( 
       <>
       <div className="imgBackground ">
-          <div className="flex flex-col">
+        <h1 className="text-6xl font-poppins xs:text-8xl font-bold">ToDo</h1>
+        <p className='text-lg font-michroma xs:font-normal xs:text-2xl'>Onde você faz acontecer!</p>
+        <div className='flex flex-col p-6 items-center border-solid backdrop-blur-md border-2 border-white rounded-xl m-10 box-border text-center gap-5 min-h-20 justify-center py-14'>
+        <div className="flex flex-col ">
             <LogoComponent/>
-            <p className='slogan'>Onde você faz acontecer!</p>
+            
           </div>
-        <div className='flex flex-col p-2 items-center backdrop-blur-sm border-2 border-blue-500 rounded-4 m-10 box-border text-center gap-2 min-h-20'>
           <img src={LogoComponent} alt="" className="logo"/>
-          <p className="text-sm">Seja bem vindo(a) ao ToDo, a minha plataforma de E-commerce!</p>
+          <p className="text-lg max-w-xs text-justify">Seja bem vindo(a) ao ToDo, a minha plataforma de Digital Bank!</p>
           <a href="javascript:void(0)" onClick={goCadastro}>
             <Botao texto='Sou Novo!'/>
           </a>
