@@ -29,8 +29,3 @@ class ClienteViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, )
     queryset = Clientes.objects.all()
     serializer_class = ClientesSerializer
-
-class CorViewSet(viewsets.ModelViewSet):
-    
-    queryset = Cor.objects.all()
-    serializer_class = CorSerializer

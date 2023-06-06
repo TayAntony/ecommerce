@@ -6,20 +6,12 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model = Categorias
         fields = ['id', 'nome']
 
-class CorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cor
-        fields = ['nome', 'codigo_hex']
-
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produtos
-        fields = ['id', 'nome', 'descricao', 'preco', 'qtd_estoque', 'foto', 'categoria', 'num_parcelas', 'vendedora', 'disponibilidade', 'cores']
+        fields = ['id', 'nome', 'descricao', 'preco', 'qtd_estoque', 'foto', 'categoria', 'num_parcelas', 'vendedora', 'disponibilidade']
     
-    #categoria = Categoria.
-    #categoria = CategoriaSerializer()
-
 class ClientesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clientes
@@ -28,12 +20,12 @@ class ClientesSerializer(serializers.ModelSerializer):
 class EnderecosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enderecos
-        fields = ['id', 'logradouro', 'numero', 'cliente']
+        fields = ['id', 'logradouro', 'bairro', 'complemento', 'uf', 'cep', 'numero', 'cliente']
 
 class PedidosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedidos
-        fields = ['id', 'metodo', 'data_pedido', 'preco_total']
+        fields = ['id', 'metodo', 'data_pedido', 'preco_total', 'status_pagamento']
 class PedidosItensSerializer(serializers.ModelSerializer):
     class Meta:
         model = PedidosItens

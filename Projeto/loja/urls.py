@@ -4,7 +4,6 @@ from . import views
 
 router = routers.SimpleRouter()
 router.register('clientes', views.ClienteViewSet)
-router.register('cores', views.CorViewSet)
 
 urlpatterns = [
     path('produtos', view=views.ProdutoList.as_view()),
