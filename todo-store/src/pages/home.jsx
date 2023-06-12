@@ -6,6 +6,7 @@ import MyComponent from '../components/barra-pesquisa'
 import CardProduto from '../components/cardProduto'
 import { CardCarregando } from '../components/CardCarregando'
 import {ip} from './inicio'
+import deslogar from '../assets/icons/deslogar.svg'
 
 function useSession() {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ function useSession() {
                         Authorization: `Token ${token}`
                     }
                 });
+
                 setUser(data);
                 setIsLoading(false); //conseguiu pegar o nome do usuário pra chamar na home
             } catch (err) {
@@ -46,7 +48,9 @@ function Homepage() {
     const [lista, setLista] = useState(null);
    
     useEffect(() => {
-        axios.get(`${ip}/loja/produtos`, { headers: { "Content-Type": "aplication/json" } })
+        const token = localStorage.getItem('token')
+        axios.get(`${ip}/loja/produtos`, { 
+            headers: { "Content-Type": "aplication/json", Authorization: `Token ${token}`}})
         .then((res) => {
             setLista(res.data)                
         })
@@ -59,11 +63,21 @@ function Homepage() {
         </>
     );
 
+    async function logout() {
+        localStorage.removeItem("token");
+        navigation.navigate('/login')
+    }
+
     return (
         <>
 
             <Header />
-            <p className='text-black text-center'>Olá {user.username}, seja bem-vindo(a)</p>
+            <div className='flex justify-around items-center'>
+                <p className='text-black text-center'>Olá {user.username}, seja bem-vindo(a)</p>
+                <div onClick={logout} className='w-6'>
+                    <img src={deslogar} alt="" />
+                </div>
+            </div>
             <div className='p-4'>
                 <MyComponent />
                 <h1 className="text-black font-bold mt-5 ml-7">Ofertas Imperdíveis!</h1>

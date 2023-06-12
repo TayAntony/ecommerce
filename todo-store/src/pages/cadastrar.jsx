@@ -43,7 +43,7 @@ function Cadastrar() {
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops...',
-                text: 'Seu usuário deve conter algum dos seguintes: @ . _ -',
+                text: 'Seu usuário deve conter underline: _',
                 confirmButtonText: 'Tentar novamente',
                 confirmButtonColor: '#D51317',
             });

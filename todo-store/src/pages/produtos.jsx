@@ -4,7 +4,12 @@ import axios from 'axios'
 import {ip} from './inicio'
 
 const Produtos = () => {
-    axios.get(`${ip}/loja/produtos/`)
+    const token = localStorage.getItem('token');
+    axios.get(`${ip}/loja/produtos/`, {
+        headers: {
+            Authorization: `Token ${token}`
+        }
+    })
         .then((res)=>{
             console.log(res.data)
         })

@@ -13,8 +13,18 @@ function ProdutoDetalhe(navigation) {
 
     const [produto, setProduto] = useState()
 
+    const AddCarrinho = () => {
+        console.log('adicionando ao carrinho')
+    }
+
     useEffect(() =>{
-        axios.get(`${ip}/loja/produtos/${id}`)
+        const token = localStorage.getItem('token');
+        axios.get(`${ip}/loja/produtos/${id}`, {
+            headers: {
+                Authorization: `Token ${token}`
+            }
+        })
+        
         .then((res)=>{
             setProduto(res.data)
         })
@@ -45,7 +55,7 @@ function ProdutoDetalhe(navigation) {
     
     <div className="flex flex-col gap-8">
         <Comprar texto='Comprar'/>
-        <BtnCarrinho className="bg-white flex-row-reverse text-lg" texto='Adicionar ao carrinho'>
+        <BtnCarrinho onPress={() => (AddCarrinho)} className="bg-white flex-row-reverse text-lg" texto='Adicionar ao carrinho'>
             <img src={imgCarrinho} alt="" />
         </BtnCarrinho>
     </div>
