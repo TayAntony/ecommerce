@@ -20,6 +20,7 @@ function Login() {
         //fazendo uma requisição pro endpoint de login que retorna um token
         try {
             const res = await axios.post(`${ip}/auth/token/login/`, infoDoLogin);
+            localStorage.removeItem("token");
             localStorage.setItem('token', res.data.auth_token);
             navigate("/homepage")
         } catch (err) {

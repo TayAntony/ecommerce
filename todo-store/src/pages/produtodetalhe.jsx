@@ -55,7 +55,7 @@ function ProdutoDetalhe(navigation) {
     
     <div className="flex flex-col gap-8">
         <Comprar texto='Comprar'/>
-        <BtnCarrinho onPress={() => (AddCarrinho)} className="bg-white flex-row-reverse text-lg" texto='Adicionar ao carrinho'>
+        <BtnCarrinho onClick={() => (AddCarrinho)}  className="bg-white flex-row-reverse text-lg" texto='Adicionar ao carrinho'>
             <img src={imgCarrinho} alt="" />
         </BtnCarrinho>
     </div>
